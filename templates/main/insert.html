@@ -1,0 +1,62 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<div class="col-md-6">
+    <div class="wow fadeInUp" data-wow-delay="0.2s">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                        <label for="title">Title</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="description" name="description"
+                               placeholder="Description">
+                        <label for="description">Description</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="price" name="price" placeholder="Price">
+                        <label for="price">Price</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <select class="form-select" id="price_type" name="price_type">
+                            <option value="$">USD</option>
+                            <option value="So'm">UZS</option>
+                            <option value="Euro">EURO</option>
+                        </select>
+                        <label for="price_type">Price type</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <select class="form-select" id="product_type" name="product_type">
+                            {% for pt in product_types %}
+                            <option value="{{ pt.id }}">{{ pt.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="product_type">Product type</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-floating">
+                        <input type="file" class="form-control" id="image" name="image" placeholder="Image">
+                        <label for="image">Image</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}
